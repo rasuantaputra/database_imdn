@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+        crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+        crossorigin="anonymous"></script>
+    <!-- Favicons -->
+    <link href="bppt.png" rel="shortcut icon" type="image/vnd.microsoft.icon">
+    <link href="bppt.png" rel="apple-touch-icon">
+
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <!-- header start -->
+    <header>
+        <!-- navbar -->
+        <div class="header">
+            <nav class="navbar navbar-dark fixed-top bg-primary py-3">
+                <a href="#">
+                    <h3 style="color: #edf2f7; font-weight: bold">Database IMDN</h3>
+                </a>
+                <!-- Navbar content -->
+                <form class="form-inline">
+                    <!-- <a href="{{ route('/') }}"><button type="button" class="btn btn-success"
+                            style="font-weight: bold; margin-right: 10px;"><i class="fas fa-server"></i>
+                            Tampilan</button></a> -->
+                    <a href="{{ route('logout') }}"><button type="button" class="btn btn-danger"
+                            style="font-weight: bold"><i class="fa fa-sign-out-alt"></i> Keluar</button></a>
+                </form>
+            </nav>
+        </div>
+        <!-- sidebar start -->
+        <div class="wrapper">
+            <nav id="sidebar">
+                <ul class="list-unstyled components">
+                    <!-- dashboard -->
+                    <li>
+                    <li class="list-group-item"><a href="#"><i class="fas fa-desktop"></i> Dashboard</a></li>
+                    </li>
+
+                    <!-- manufaktur kelistrikan -->
+                    <li class="list-group-item"><a href="#manufaktur" data-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle"><i class="fas fas fa-bolt"></i> Kelistrikan</a></li>
+                    <ul class="collapse list-unstyled" id="manufaktur">
+                        <li>
+                            <a href="{{ route('kelistrikan.perusahaan.index') }}">Perusahaan</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('kelistrikan.jenisproduk.index') }}">Jenis Produk</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('kelistrikan.produk.index') }}">Produk</a>
+                        </li>
+                    </ul>
+                    <li class="active">
+                        <!-- Transportasi darat -->
+                    <li class="list-group-item"><a href="#transportasi-darat" data-toggle="collapse"
+                            aria-expanded="false" class="dropdown-toggle"><i class="fas fa-subway"></i> Kereta Api</a>
+                    </li>
+                    <ul class="collapse list-unstyled" id="transportasi-darat">
+                        <li>
+                            <a href="{{ route('keretaapi.perusahaan.index') }}">Perusahaan</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('keretaapi.jenisproduk.index') }}">Jenis Produk</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('keretaapi.produk.index') }}">Produk</a>
+                        </li>
+                    </ul>
+                    </li>
+                    <li>
+                        <!-- Transportasi KBL -->
+                    <li class="list-group-item"><a href="#transportasi-kbl" data-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle"><i class="fas fa-taxi"></i> KBL</a>
+                    </li>
+                    <ul class="collapse list-unstyled" id="transportasi-kbl">
+                        <li>
+                            <a href="{{ route('kbl.perusahaan.index') }}">Perusahaan</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('kbl.jenisproduk.index') }}">Jenis Produk</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('kbl.produk.index') }}">Produk</a>
+                        </li>
+                    </ul>
+                    </li>
+                    <li>
+
+            </nav>
+        </div>
+        <!-- sidebar end -->
+    </header>
+    <!-- header end -->
+
+    <!-- Documentation start -->
+    <div class="documentation">
+        <div class="container">
+            <!-- Content here -->
+            <h1>Pengantar</h1>
+            <!-- <img src="1.gif" alt="" srcset=""> -->
+            <p>
+                Selamat datang !
+                <br> Ini merupakan platform Database Industri Manufaktur Dalam Negeri Pusat Pengkajian Industri
+                Manufaktur Telematika dan Elektronika (PPIMTE). Database ini berisikan data perusahaan, jenis produk,
+                produk, dan detail sertifikat dari sektor industri kajian PPIMTE. Pada halaman ini akan dijelaskan
+                bagaimana cara menambah, mengubah, dan menghapus data.
+            </p>
+            <hr>
+
+            <h1>Penggunaan Database</h1>
+        </div>
+        <div class="container">
+            <div class="toc">
+                <h4>Daftar Isi</h4>
+                <ul style="list-style-type:none;">
+                    <li><a href="#_Menambah_Data" style="color: #fff;"> <u>Menambah Data</u></a></li>
+                    <li><a href="#_Mengubah_Data" style="color:#fff;"> <u>Mengubah Data</u></a></li>
+                    <li><a href="#_Menghapus_Data" style="color:#fff;"><u>Menghapus Data</u></a></li>
+                </ul>
+            </div>
+
+            <p>Database ini memiliki 3 (tiga) tabel yaitu tabel Perusahaan, Jenis Produk, dan Produk. Tabel Produk
+                memiliki relasi dengan tabel Perusahaan dan Jenis Produk, hal tersebut bertujuan untuk normalisasi data
+                (agar tidak terjadi duplikasi). Maka dari itu apabila ada penambahan data, tabel Perusahaan dan Jenis
+                Produk harus di isi terlebih dahulu. Cara menambahkan data pada setiap tabel sama. </p>
+            <hr>
+
+            <h1><a name="_Menambah_Data" style="color: #fff;">Menambah Data</a></h1>
+        </div>
+        <div class="container">
+            <div>
+                <p>Menambah data dapat dilakukan dengan cara berikut :</p>
+                <ul>
+                    <li>Pilih industri pada sidebar di samping</li>
+                    <li>Pilih tabel yang ingin di tambah datanya</li>
+                    <li>Klik tombol <span style="font-weight: bold;">Tambah Data</span> yang terletak di atas tabel</li>
+                    <img src="tambah-data.png" style="width: 100%;">
+                    <li>Isi formulir dan tekan tombol <span style="font-weight: bold;">Simpan</span> yang terletak di
+                        bawah formulir</li>
+                    <img src="formulir.png" style="width: 100%;">
+                </ul>
+                <div class="alert alert-info" role="alert" style="border-top: 6px solid; width: 100%;">
+                    <table>
+                        <tr>
+                            <td><i class="fas fa-lightbulb fa-3x"></i></td>
+                            <td><p style="padding-left: 10px;">Jika terdapat data yang tidak ada pada formulir (kosong) maka isilah dengan tanda <span style="font-weight: bold;">strip (-)</span>.</p></td>
+                        </tr>
+                    </table>                    
+                </div>
+                <hr>
+                <h1><a name="_Mengubah_Data" style="color: #fff;">Mengubah Data</a></h1>
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <p>Mengubah/mengedit data dapat dilakukan dengan cara berikut :</p>
+                <ul>
+                    <li>Pilih industri pada sidebar di samping</li>
+                    <li>Pilih tabel yang ingin di ubah/edit datanya</li>
+                    <li>Klik tombol <span style="font-weight: bold;">Edit</span> pada kolom <span
+                            style="font-weight: bold;">Aksi</span></li>
+                    <img src="edit.png" style="width: 100%;">
+                    <li>Kemudian akan keluar halaman formulir sama seperti saat ingin menambahkan data, dan ubah isi
+                        formulir untuk data yang ingin di ubah</li>
+                    <li>Klik tombol <span style="font-weight: bold;">Update</span> untuk mengubah isi data</li>
+                    <img src="update.png" style="width: 100%;">
+                    <li>Kemudian pada bagian atas tabel akan keluar tulisan notifikasi <span
+                            style="font-weight: bold;">Data Berhasil Diupdate!</span></li>
+                    <img src="notifikasi.png" style="width: 100%;">
+                </ul>
+
+                <hr>
+                <h1><a name="_Menghapus_Data" style="color: #fff;">Menghapus Data</a></h1>
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <p>Menghapus data dapat dilakukan dengan cara klik tombol <span style="font-weight: bold;">Hapus</span>
+                    pada kolom aksi. Jika data berhasil terhapus maka akan ada notifikasi <span
+                        style="font-weight: bold;">Data Berhasil Dihapus !</span></p>
+                <ul style="list-style-type:none;">
+                    <li></li>
+                    <!-- <img src="hapus.png" style="width: 27cm;"> -->
+                </ul>
+            </div>
+            <div id="alert">
+                <div class="alert alert-info" role="alert" style="border-top: 6px solid;">
+                    <table>
+                        <tr>
+                            <td><i class="fas fa-lightbulb fa-3x"></i></td>
+                            <td><p style="padding-left: 10px;">Pada database ini, tabel Produk terhubung dengan tabel <span style="font-weight: bold;">Perusahaan</span> dan <span style="font-weight: bold;">Jenis Produk</span>. Jika terdapat data
+                                yang terhapus pada salah satu tabel tersebut, maka data pada tabel <span style="font-weight: bold;">Produk</span> yang memiliki relasi
+                                data dengan kedua tabel akan ikut terhapus seluruhnya.</p></td>
+                        </tr>
+                    </table>                    
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- Documentation end -->
+
+
+
+
+
+    <!-- library -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+    <!--  -->
+</body>
+
+</html>

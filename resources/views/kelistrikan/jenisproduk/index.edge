@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+        crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+        crossorigin="anonymous"></script>
+    <!-- Favicons -->
+    <link href="bppt.png" rel="shortcut icon" type="image/vnd.microsoft.icon">
+    <link href="bppt.png" rel="apple-touch-icon">
+    
+    <title>Data Jenis Produk Kelistrikan</title>
+</head>
+
+<body>
+    <!-- header start -->
+    <header>
+        <!-- navbar -->
+        <div class="header">
+            <nav class="navbar navbar-dark fixed-top bg-primary py-3">
+                <a href="#">
+                    <h3 style="color: #edf2f7; font-weight: bold">Database IMDN</h3>
+                </a>
+                <!-- Navbar content -->
+                <form class="form-inline">
+                    <a href="{{ route('kelistrikan.tampilan.index') }}"><button type="button" class="btn btn-success" style="font-weight: bold; margin-right: 10px;"><i class="fas fa-server"></i> Tampilan</button></a>
+                    <a href="{{ route('logout') }}"><button type="button" class="btn btn-danger" style="font-weight: bold"><i class="fa fa-sign-out-alt"></i> Logout</button></a>
+                </form>
+            </nav>
+        </div>
+        <!-- sidebar start -->
+        <div class="wrapper">
+            <nav id="sidebar">
+                <ul class="list-unstyled components">
+                    <!-- dashboard -->
+                    <li>
+                    <li class="list-group-item"><a href="{{ route('dashboard.index') }}"><i class="fas fa-desktop"></i>
+                            Dashboard</a></li>
+                    </li>
+
+                    <!-- manufaktur kelistrikan -->
+                    <li class="list-group-item"><a href="#manufaktur" data-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle"><i class="fas fas fa-bolt"></i> Kelistrikan</a></li>
+                    <ul class="collapse list-unstyled" id="manufaktur">
+                        <li>
+                            <a href="{{ route('kelistrikan.perusahaan.index') }}">Perusahaan</a>
+                        </li>
+                        <li>
+                            <a href="#">Jenis Produk</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('kelistrikan.produk.index') }}">Produk</a>
+                        </li>
+                    </ul>
+                    <li class="active">
+                        <!-- Transportasi darat -->
+                    <li class="list-group-item"><a href="#transportasi-darat" data-toggle="collapse"
+                            aria-expanded="false" class="dropdown-toggle"><i class="fas fa-subway"></i> Kereta Api</a>
+                    </li>
+                    <ul class="collapse list-unstyled" id="transportasi-darat">
+                        <li>
+                            <a href="{{ route('keretaapi.perusahaan.index') }}">Perusahaan</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('keretaapi.jenisproduk.index') }}">Jenis Produk</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('keretaapi.produk.index') }}">Produk</a>
+                        </li>
+                    </ul>
+                    </li>
+                    <li>
+                        <!-- Transportasi KBL -->
+                    <li class="list-group-item"><a href="#transportasi-kbl" data-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle"><i class="fas fa-taxi"></i> KBL</a>
+                    </li>
+                    <ul class="collapse list-unstyled" id="transportasi-kbl">
+                        <li>
+                            <a href="{{ route('kbl.perusahaan.index') }}">Perusahaan</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('kbl.jenisproduk.index') }}">Jenis Produk</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('kbl.produk.index') }}">Produk</a>
+                        </li>
+                    </ul>
+                    </li>
+                    <li>
+
+            </nav>
+        </div>
+        <!-- sidebar end -->
+    </header>
+    <!-- header end -->
+
+
+
+
+    <div class="container" style="padding-top: 80px; margin-left: 250px;">
+        <div class="row">
+            <div class="col-md-11">
+                <!-- Notofication Message -->
+                @if(flashMessage('notification'))
+                <div class="alert alert-primary" role="alert">{{ flashMessage('notification') }}</div>
+                @endif
+                <!--  -->
+
+                <div class="card">
+                    <!-- Head Card -->
+                    <div class="card-header">
+                        <h5 style="font-family: 'Poppins', sans-serif; font-weight: bold;">Data Jenis Produk Kelistrikan
+                        </h5>
+                    </div>
+                    <!--  -->
+
+                    <!-- Card Body -->
+                    <div class="card-body" style="font-family: 'Poppins', sans-serif;">
+
+                        <!-- add data Button -->
+                        <a href="{{ route('kelistrikan.jenisproduk.create') }}" class="btn btn-primary"
+                            style="margin-bottom: 10px">Tambah Data</a>
+                        <!--  -->
+
+                        <!-- Tabel -->
+                        <table class="table table-hovered table-striped table-bordered" id="Jenisproduk">
+
+                            <!-- Head Tabel -->
+                            <thead>
+                                <tr>
+                                    <th style="text-align:center">Jenis Produk</th>
+                                    <th style="text-align:center">Aksi</th>
+                                </tr>
+                            </thead>
+
+                            <!-- body table. Parse data form mysql -->
+                            <tbody>
+                                @each(jenisproduk in jenisproduks)
+                                <tr>
+                                    <td> {{ jenisproduk.jenis_produk }} </td>
+                                    <td class="text-center" style="width: 150px; text-align:center">
+                                        <a href="{{ route('kelistrikan.jenisproduk.edit', { id : jenisproduk.id }) }}"
+                                            class="btn btn-sm btn-primary">EDIT</a>
+                                        <a href="{{ route('kelistrikan.jenisproduk.delete', { id : jenisproduk.id }) }}"
+                                            class="btn btn-sm btn-danger">HAPUS</a>
+                                    </td>
+                                </tr>
+                                @endeach
+                            </tbody>
+                            <!--  -->
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- library -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+    <!--  -->
+
+    <!-- datatable config -->
+    <script>
+        $(document).ready(function () {
+            // ===============================================
+            /*
+                var groupColumn = 0;
+                var table = $('#dataPerusahaan').DataTable({
+                    pageLength : 10,
+                    pagingType : 'full_numbers',
+                    "columnDefs": [
+                        { "visible": false, "targets": groupColumn }
+                    ],
+                    "order": [[ groupColumn, 'asc' ]],
+                    "displayLength": 25,
+                    "drawCallback": function ( settings ) {
+                        var api = this.api();
+                        var rows = api.rows( {page:'current'} ).nodes();
+                        var last=null;
+             
+                        api.column(groupColumn, {page:'current'} ).data().each( function ( group, i ) {
+                            if ( last !== group ) {
+                                $(rows).eq( i ).before(
+                                    '<tr class="bg-primary text-light"><td style="text-align:center;" colspan="6">'+group+'</td></tr>'
+                                );
+             
+                                last = group;
+                            }
+                        } );
+                    }
+                } );
+             
+                // Order by the grouping
+                $('#dataPerusahaan tbody').on( 'click', 'tr.group', function () {
+                    var currentOrder = table.order()[0];
+                    if ( currentOrder[0] === groupColumn && currentOrder[1] === 'asc' ) {
+                        table.order( [ groupColumn, 'desc' ] ).draw();
+                    }
+                    else {
+                        table.order( [ groupColumn, 'asc' ] ).draw();
+                    }
+                } );
+            */
+            // ===============================================
+            $(document).ready(function () {
+                $('#Jenisproduk').DataTable();
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300');
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  /* font-family: 'Montserrat', sans-serif; */
+  /* font-weight: 300; */
+  /* background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("/gedung.png"); */
+  background-color: #2b579a;
+}
+
+/* * {
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 536px;
+  margin: auto;
+  position: relative;
+}
+
+section:before {
+  content: "";
+  position: absolute;
+  background: url("/pyramid.png") no-repeat;
+  background-size: 100%;
+  width: 100%;
+  height: 402px;
+  z-index: -1;
+}
+
+.logo {
+  background: url("/logo.svg") no-repeat;
+  width: 36px;
+  height: 33px;
+  background-size: 100%;
+  margin-bottom: 35px;
+  opacity: 0;
+  animation: slideUp 1s cubic-bezier(0.19, 1, 0.30, 1) 1.3s forwards;
+}
+
+
+a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+p {
+  margin: 0.83rem 0;
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.2%;
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+} */
+
+
+
+/*  */
+/* html, body {margin: 0; height: 100%; overflow-x:hidden} */
+
+
+.wrapper{
+  position: absolute;
+  left: 0;
+  padding-top: 5%;
+  width: 19%;
+  height: 460%;
+  background: #007bff;
+  color: blanchedalmond;
+}
+
+#sidebar ul p {
+  color: #fff;
+  padding: 0%;
+}
+
+#sidebar ul li a {
+  padding: 1%;
+  font-size: 1.1em;
+  display: block;
+}
+
+
+ul ul a {
+  font-size: 0.9em !important;
+  padding-left: 10% !important;
+  background: #edf2f7;
+}
+
+a {
+  color: #47b2e4;
+}
+
+a:hover {
+  color: #73c5eb;
+  text-decoration: none;
+}
+
+h1, h2 {
+  font-family: 'Poppins', sans-serif;
+}
+
+.documentation{
+  padding-top: 6%;
+  padding-left: 19%;
+  font-family: 'Poppins', sans-serif;
+  font-size: large;
+  color: #fff;
+}
+
+.paragraph {
+  text-align: center;
+}
+
+.documentation h1{
+  font-weight: bold;
+}
+
+.documentation p{
+  padding-top: 1%;
+  font-size: 14pt;
+  text-align: justify;
+}
+.documentation hr{
+  border-top: 1px solid #fff;
+}
+
+.toc {
+  width: 250px;
+  border: 1px solid #fff;
+  padding-left: 10px;
+  padding-top: 10px;
+  margin: 20px;
+  font-size: 13pt;
+  text-align: justify;
+  color: #fff;
+}
+/*--------------------------------------------------------------
+# home Section
+--------------------------------------------------------------*/
+#home {
+  width: 100%;
+  height: 80vh;
+}
+
+#home .container {
+  padding-top: 72px;
+}
+
+#home h1 {
+  margin: 0 0 10px 0;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  color: #fff;
+}
+
+#home h2 {
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 50px;
+  font-size: 24px;
+}
+
+#home .btn-get-started {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 28px 11px 28px;
+  border-radius: 50px;
+  transition: 0.5s;
+  margin: 10px 0 0 0;
+  color: #fff;
+  background: #007bff;
+}
+
+#home .btn-get-started:hover {
+  background: #209dd8;
+}
+
+#home .btn-watch-video {
+  font-size: 16px;
+  display: inline-block;
+  padding: 10px 0 8px 40px;
+  transition: 0.5s;
+  margin: 10px 0 0 25px;
+  color: #fff;
+  position: relative;
+}
+
+#home .btn-watch-video i {
+  color: #fff;
+  font-size: 32px;
+  position: absolute;
+  left: 0;
+  top: 7px;
+  transition: 0.3s;
+}
+
+#home .btn-watch-video:hover i {
+  color: #47b2e4;
+}
+
+#home .animated {
+  animation: up-down 2s ease-in-out infinite alternate-reverse both;
+}
+
+@media (max-width: 991px) {
+  #home {
+    height: 100vh;
+    text-align: center;
+  }
+  #home .animated {
+    -webkit-animation: none;
+    animation: none;
+  }
+  #home .typografi-ppimte {
+    text-align: center;
+  }
+  #home .typografi-ppimte img {
+    width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  #home h1 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  #home h2 {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 30px;
+  }
+  #home .typografi-ppimte img {
+    width: 70%;
+  }
+}
+
+@media (max-width: 575px) {
+  #home .typografi-ppimte img {
+    width: 80%;
+  }
+  #home .btn-get-started {
+    font-size: 16px;
+    padding: 10px 24px 11px 24px;
+  }
+}
+
+@-webkit-keyframes up-down {
+  0% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes up-down {
+  0% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
